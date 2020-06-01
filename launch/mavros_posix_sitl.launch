@@ -12,8 +12,9 @@
     <!-- vehicle model and world -->
     <arg name="est" default="ekf2"/>
     <arg name="vehicle" default="iris"/>
-    <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds/empty.world"/>
-    <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle)/$(arg vehicle).sdf"/>
+    <arg name="vehicle_cam" default="iris_stereo_camera"/>
+    <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds/utrap.world"/>
+    <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle_cam)/$(arg vehicle_cam).sdf"/>
 
     <!-- gazebo configs -->
     <arg name="gui" default="true"/>
@@ -51,4 +52,14 @@
         <arg name="fcu_url" value="$(arg fcu_url)"/>
         <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
     </include>
+
+    <node ns="stereo" pkg="stereo_image_proc" type="stereo_image_proc" name="stereo_image_proc">
+        <param name="stereo_algorithm" type="double" value="1.0" />
+        <param name="correlation_window_size" type="double" value="19.0" />
+        <param name="disparity_range" type="double" value="32.0" />
+        <param name="uniqueness_ratio" type="double" value="40.0" />
+        <param name="speckle_size" type="double" value="1000.0" />
+        <param name="speckle_range" type="double" value="2.0" />
+   </node>
+
 </launch>

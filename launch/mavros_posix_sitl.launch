@@ -13,15 +13,16 @@
     <arg name="est" default="ekf2"/>
     <arg name="vehicle" default="iris"/>
     <arg name="vehicle_cam" default="iris_stereo_camera"/>
-    <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds/utrap.world"/>
+    <arg name="world" default="$(find mavlink_sitl_gazebo)/worlds/block_size_map_with_cylinders2.world"/>
     <arg name="sdf" default="$(find mavlink_sitl_gazebo)/models/$(arg vehicle_cam)/$(arg vehicle_cam).sdf"/>
 
     <!-- gazebo configs -->
-    <arg name="gui" default="true"/>
+    <arg name="gui" default="false"/>
     <arg name="debug" default="false"/>
     <arg name="verbose" default="false"/>
     <arg name="paused" default="false"/>
     <arg name="respawn_gazebo" default="false"/>
+<!--    <arg name="use_sim_time" default="true"/>-->
     <!-- MAVROS configs -->
     <arg name="fcu_url" default="udp://:14540@localhost:14557"/>
     <arg name="respawn_mavros" default="false"/>
